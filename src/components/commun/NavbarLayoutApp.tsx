@@ -27,10 +27,11 @@ const NavbarLayoutApp = () => {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent
-        className='sm:hidden'
+        className='flex flex-1 sm:hidden'
         justify='start'
       >
         <NavbarMenuToggle
+          className='w-10'
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         />
       </NavbarContent>
@@ -52,18 +53,22 @@ const NavbarLayoutApp = () => {
           <NavLink
             aria-current='page'
             className={({ isActive }) =>
-              isActive ? 'text-primary' : 'dark:text-white text-dark'
+              isActive
+                ? 'text-primary flex gap-1'
+                : 'dark:text-white text-dark flex gap-1'
             }
             to='/'
           >
-            <Home className='me-2' /> Inicio
+            <Home /> Inicio
           </NavLink>
         </NavbarItem>
         <NavbarItem isActive>
           <NavLink
             aria-current='page'
             className={({ isActive }) =>
-              isActive ? 'text-primary' : 'dark:text-white text-dark'
+              isActive
+                ? 'text-primary flex gap-1'
+                : 'dark:text-white text-dark flex gap-1'
             }
             to='/crud-redux'
           >
@@ -113,7 +118,9 @@ const NavbarLayoutApp = () => {
           <NavLink
             aria-current='page'
             className={({ isActive }) =>
-              isActive ? 'text-primary' : 'dark:text-white text-dark'
+              isActive
+                ? 'text-primary flex gap-1'
+                : 'dark:text-white text-dark flex gap-1'
             }
             to='/'
             onClick={closeMenu}
@@ -124,7 +131,9 @@ const NavbarLayoutApp = () => {
           <NavLink
             aria-current='page'
             className={({ isActive }) =>
-              isActive ? 'text-primary' : 'dark:text-white text-dark'
+              isActive
+                ? 'text-primary flex gap-1'
+                : 'dark:text-white text-dark flex gap-1'
             }
             to='/crud-redux'
             onClick={closeMenu}
