@@ -1,17 +1,24 @@
-import ListOfUser from './components/tables/ListOfUsers';
-import ButtonChangeTheme from './components/theme/ButtonChangeTheme';
-import { useAppSelector } from './store';
+import LayoutApp from './layout/LayoutApp';
+import Crud from './pages/Crud';
+import Home from './pages/Home';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const App = () => {
-  const { theme } = useAppSelector((state) => state.theme);
   return (
-    <main className={`${theme} text-foreground bg-background min-h-dvh`}>
-      <div className='container mx-auto p-4'>
-        <ButtonChangeTheme />
-        <div className='mt-10'>
-          <ListOfUser />
-        </div>
-      </div>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<LayoutApp />}>
+          <Route
+            path='/'
+            element={<Home />}
+          />
+          <Route
+            path='/crud-redux'
+            element={<Crud />}
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 export default App;
