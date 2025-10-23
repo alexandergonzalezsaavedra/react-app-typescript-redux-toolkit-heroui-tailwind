@@ -2,10 +2,12 @@ import type React from 'react';
 import { Outlet } from 'react-router-dom';
 import { useAppSelector } from '../store';
 import NavbarLayoutApp from '../components/commun/NavbarLayoutApp';
+import { ToastProvider } from '@heroui/react';
 const LayoutApp: React.FC = () => {
   const { theme } = useAppSelector((state) => state.theme);
   return (
     <main className={`${theme} text-foreground bg-background min-h-dvh`}>
+      <ToastProvider placement='top-center' />
       <div className='container mx-auto'>
         <header>
           <NavbarLayoutApp />

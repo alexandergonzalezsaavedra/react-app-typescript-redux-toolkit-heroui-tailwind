@@ -46,12 +46,12 @@ export const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    deleteUser: (state, action: PayloadAction<User['id']>) => {
+    deleteUserById: (state, action: PayloadAction<User['id']>) => {
       const userId = action.payload;
       state.users = state.users.filter((user) => user.id !== userId);
     },
   },
 });
 
-export const { deleteUser } = userSlice.actions;
+export const { deleteUserById } = userSlice.actions;
 export default userSlice.reducer;

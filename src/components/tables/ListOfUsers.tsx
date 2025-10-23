@@ -14,7 +14,7 @@ import { DeleteIcon, EditIcon, EyeIcon } from 'lucide-react';
 import { useSetUser } from '../../hooks/users/useSetUser';
 
 const ListOfUser = () => {
-  const { users, columns, deleteUserSelected } = useSetUser();
+  const { users, columns, deleteUserId } = useSetUser();
   return (
     <Table aria-label='Tabla CRUD'>
       <TableHeader columns={columns}>
@@ -70,7 +70,7 @@ const ListOfUser = () => {
                 >
                   <span
                     className='text-lg text-danger cursor-pointer active:opacity-50'
-                    onClick={() => deleteUserSelected(item.id)}
+                    onClick={() => deleteUserId(item.id)}
                   >
                     <DeleteIcon />
                   </span>
