@@ -1,26 +1,9 @@
 import { Button } from '@heroui/react';
 import { CloudMoon, Sun } from 'lucide-react';
-import { useAppSelector } from '../../store';
-import { useDispatch } from 'react-redux';
-import { setTheme } from '../../store/slices/theme/themeSlice';
-import { useEffect } from 'react';
+import { useSetTheme } from '../../hooks/theme/useSetTheme';
 
 const ButtonChangeTheme = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const storageTheme = localStorage.getItem('theme') ?? '';
-    if (storageTheme) {
-      dispatch(setTheme(storageTheme));
-    }
-  }, [dispatch]);
-  const { theme } = useAppSelector((state) => state.theme);
-  const handleChangeTheme = () => {
-    if (theme === 'dark') {
-      dispatch(setTheme('light'));
-    } else {
-      dispatch(setTheme('dark'));
-    }
-  };
+  const { changeTheme, theme } = useSetTheme();
   return (
     <>
       <Button
@@ -30,7 +13,7 @@ const ButtonChangeTheme = () => {
             : 'from-blue-500 to-indigo-500'
         }`}
         radius='full'
-        onPress={handleChangeTheme}
+        onPress={changeTheme}
         isIconOnly
       >
         {theme === 'dark' ? <Sun /> : <CloudMoon />}

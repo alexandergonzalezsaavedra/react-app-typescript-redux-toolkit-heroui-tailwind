@@ -11,46 +11,13 @@ import {
 } from '@heroui/react';
 import { DeleteIcon, EditIcon, EyeIcon } from 'lucide-react';
 
-interface UserInterface {
-  id: string;
-  name: string;
-  status: boolean;
-  avatar: string;
-  email: string;
-}
-
-const users: UserInterface[] = [
-  {
-    id: '1',
-    name: 'Tony Reichert',
-    status: true,
-    avatar: ``,
-    email: 'tony.reichert@example.com',
-  },
-  {
-    id: '2',
-    name: 'Tony Reichert',
-    status: false,
-    avatar: '',
-    email: 'tony.reichert@example.com',
-  },
-];
-
-interface ColumnasInterface {
-  name: string;
-  uid: string;
-}
-
-const columnas: ColumnasInterface[] = [
-  { name: 'USUARIO', uid: 'user' },
-  { name: 'ESTADO', uid: 'status' },
-  { name: 'ACCIONES', uid: 'actions' },
-];
+import { useSetUser } from '../../hooks/users/useSetUser';
 
 const ListOfUser = () => {
+  const { users, columns, deleteUserSelected } = useSetUser();
   return (
     <Table aria-label='Tabla CRUD'>
-      <TableHeader columns={columnas}>
+      <TableHeader columns={columns}>
         {(columa) => (
           <TableColumn
             key={columa.uid}
@@ -101,7 +68,10 @@ const ListOfUser = () => {
                   color='danger'
                   content='Eliminar usuario'
                 >
-                  <span className='text-lg text-danger cursor-pointer active:opacity-50'>
+                  <span
+                    className='text-lg text-danger cursor-pointer active:opacity-50'
+                    onClick={() => deleteUserSelected(item.id)}
+                  >
                     <DeleteIcon />
                   </span>
                 </Tooltip>

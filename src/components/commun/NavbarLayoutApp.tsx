@@ -23,11 +23,13 @@ const NavbarLayoutApp = () => {
     <Navbar
       disableAnimation
       isBordered
+      shouldHideOnScroll
+      maxWidth='2xl'
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent
-        className='flex flex-1 sm:hidden'
+        className='flex sm:hidden'
         justify='start'
       >
         <NavbarMenuToggle
@@ -45,7 +47,10 @@ const NavbarLayoutApp = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className='hidden sm:flex items-center gap-4'>
+      <NavbarContent
+        justify='start'
+        className='hidden sm:flex items-center gap-4'
+      >
         <NavbarBrand>
           <p className='font-bold text-inherit'>ALEXANDER</p>
         </NavbarBrand>
