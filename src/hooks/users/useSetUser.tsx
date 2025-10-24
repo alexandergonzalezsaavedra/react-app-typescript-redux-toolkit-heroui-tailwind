@@ -1,17 +1,28 @@
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../store';
-import { deleteUserById, type User } from '../../store/slices/users/usersSlice';
+import {
+  changeStatus,
+  createUser,
+  //createUser,
+  deleteUserById,
+  type User,
+} from '../../store/slices/users/usersSlice';
 import { addToast } from '@heroui/react';
 import { CircleX } from 'lucide-react';
 
 export const useSetUser = () => {
   const dispatch = useDispatch();
+
+  // Crear usuario
+  const addNewUser = (name: string, email: string) => {
+    dispatch(createUser({ name, email }));
+  };
+
+  // Eliminar usuario
   const users = useAppSelector((state) => state.users.users);
   const columns = useAppSelector((state) => state.users.columns);
-
   const deleteUserId = (id: User['id']) => {
     dispatch(deleteUserById(id));
-
     addToast({
       timeout: 6000,
       hideIcon: true,
@@ -28,5 +39,10 @@ export const useSetUser = () => {
     });
   };
 
-  return { users, columns, deleteUserId };
+  // cambiar estado
+  const changeStatusUserById = (id: string) => {
+    dispatch(changeStatus(id));
+  };
+
+  return { addNewUser, users, columns, deleteUserId, changeStatusUserById };
 };
