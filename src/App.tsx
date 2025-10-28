@@ -1,4 +1,5 @@
 import LayoutApp from './layout/LayoutApp';
+import AnimatedPage from './pages/AnimatedPage';
 import Crud from './pages/Crud';
 import Home from './pages/Home';
 
@@ -15,6 +16,10 @@ const App = () => {
           <Route
             path='/crud-redux'
             element={<Crud />}
+          />
+          <Route
+            path='/animacion'
+            element={<AnimatedPage />}
           />
         </Route>
       </Routes>

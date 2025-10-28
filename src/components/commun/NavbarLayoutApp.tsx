@@ -10,7 +10,7 @@ import {
   NavbarMenuToggle,
 } from '@heroui/react';
 import ButtonChangeTheme from '../theme/ButtonChangeTheme';
-import { FileCode, Github, Home, Linkedin } from 'lucide-react';
+import { Dog, FileCode, Github, Home, Linkedin, Origami } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -64,10 +64,10 @@ const NavbarLayoutApp = () => {
             }
             to='/'
           >
-            <Home /> Inicio
+            <Dog /> Conoce a Hanna
           </NavLink>
         </NavbarItem>
-        <NavbarItem isActive>
+        <NavbarItem>
           <NavLink
             aria-current='page'
             className={({ isActive }) =>
@@ -79,6 +79,20 @@ const NavbarLayoutApp = () => {
           >
             <FileCode />
             CRUD Redux
+          </NavLink>
+        </NavbarItem>
+
+        <NavbarItem className='flex items-center gap-4'>
+          <NavLink
+            aria-current='page'
+            className={({ isActive }) =>
+              isActive
+                ? 'text-primary flex gap-1'
+                : 'dark:text-white text-dark flex gap-1'
+            }
+            to='/animacion'
+          >
+            <Origami /> Animación
           </NavLink>
         </NavbarItem>
       </NavbarContent>
