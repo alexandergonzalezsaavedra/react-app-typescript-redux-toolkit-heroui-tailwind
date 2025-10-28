@@ -1,21 +1,14 @@
 import { Image } from '@heroui/react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRef } from 'react';
 
 const GalleryImage = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ['1%', '-60%']);
   return (
     <div>
       <div
         ref={ref}
-        className='flex justify-center gap-16 h-[70dvh] rounded-xl border-2 border-dotted border-slate-200 dark:border-slate-600 p-10'
+        className='relative flex justify-center gap-16 h-[70dvh] rounded-xl border-2 border-dotted border-slate-200 dark:border-slate-600 p-10'
       >
         <motion.div
           drag
@@ -93,149 +86,6 @@ const GalleryImage = () => {
             />
           </div>
         </motion.div>
-      </div>
-
-      <hr className='my-50' />
-
-      <div className='min-h-96 p-6'>
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 100 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
-          transition={{
-            duration: 0.3,
-            ease: [0.17, 0.55, 0.55, 1],
-            delay: 0.2,
-          }}
-        >
-          <h1>Alexander Gonzalez</h1>
-        </motion.div>
-
-        <div
-          ref={ref}
-          className='relative h-[300vh] bg-neutral-900'
-        >
-          <div className='sticky top-0 flex h-screen items-center overflow-hidden'>
-            <motion.div
-              style={{ x }}
-              className='flex gap-4'
-            >
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-
-              <div className='group relative h-[450px] w-[450px] overflow-hidden bg-neutral-200'>
-                <div
-                  style={{
-                    backgroundImage: `url('/hanna-bb.jpg')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                  }}
-                  className='absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110'
-                ></div>
-                <div className='absolute inset-0 z-10 grid place-content-center'>
-                  <p className='from-white/20 to-white/0 p-8 text-6xl font-black uppercase text-white backdrop-blur-lg'>
-                    Hanna
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        <div className='flex h-dvh bg-neutral-700'></div>
       </div>
     </div>
   );
